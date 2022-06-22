@@ -1,0 +1,41 @@
+<div class="fixed top-0 left-0 h-screen w-24 m-0 flex flex-col bg-blue-500 text-white shadow-lg">
+    <div>
+       <i class="sidebar-icon">
+        <fa-icon [icon]="profile" class="text-4xl"></fa-icon>   
+        </i> 
+    </div>
+    
+    <div class="m-4">
+        <hr>
+    </div> 
+
+    <div>
+        <i class="sidebar-icon" routerLinkActive="active" routerLink="/bank">
+            <fa-icon [icon]="bank" class="text-4xl"></fa-icon>   
+        </i>
+    </div>
+    
+    <div>
+        <i class="sidebar-icon" routerLinkActive="active" routerLink="/clients">
+            <fa-icon [icon]="clients" class="text-4xl"></fa-icon>   
+        </i>
+    </div>
+
+    <div>
+    <i class="sidebar-icon" routerLinkActive="active" routerLink="/income">
+            <fa-icon [icon]="income" class="text-4xl"></fa-icon>   
+        </i>
+    </div>
+    
+    <div>
+    <i class="sidebar-icon">
+            <fa-icon [icon]="expense" class="text-4xl"></fa-icon>   
+        </i>
+    </div>
+    
+    <div>
+    <i class="sidebar-icon hover:bg-red-500 hover:text-white" (click)="logout()">
+            <fa-icon [icon]="logoutbtn" class="text-4xl"></fa-icon>   
+        </i>
+    </div>
+</div>

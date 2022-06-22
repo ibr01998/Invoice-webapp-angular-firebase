@@ -1,0 +1,84 @@
+<div class="bg-blue-50 h-screen">
+    
+    <app-sidebar></app-sidebar>
+    <div class="ml-24">
+        <div>
+            <h1 class="text-3xl font-bold py-8 px-12 text-blue-900">Clients</h1>
+        </div>
+        <div class="grid lg:grid-cols-2 sm:grid-cols-1 gap-10">
+            <div class="w-80 h-36 bg-white rounded-2xl shadow-2xl m-8">
+                <h1 class="text-3xl font-semibold p-4">Clients:</h1>
+                <h1 class="m-4 float-right text-5xl text-green-500">{{totalClients}}</h1>
+            </div>
+            <div class="flex w-44 h-20 rounded-full bg-blue-500 text-center absolute right-0 m-12 cursor-pointer hover:bg-blue-600" (click)="modalToggle = !modalToggle">
+                <h1 class="m-auto text-white font-semibold text-lg">New Client</h1>
+            </div>
+        </div>
+        <div class="text-white m-8 border-4 border-white rounded-full shadow-2xl">
+            <h1> </h1>
+        </div>
+        <div class="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-4">
+            <div *ngFor="let get of gets$ | async" class="bg-white rounded-2xl shadow-2xl m-8 p-4">
+                <h1 class="text-blue-500 text-lg font-bold">{{get.companyName}} <div class="group"><span class="float-right text-red-500 text-sm cursor-pointer hover:text-red-600 group"><fa-icon [icon]="delete" appHoldable (holdTime)="holdHandler($event, get.key)"></fa-icon></span><span class="float-right text-red-600 invisible group-hover:visible"> Hold down for 1 second to delete </span></div></h1>
+                <h1 class="font-semibold">{{get.country}}</h1>
+                <h1 class="font-semibold">{{get.type}}</h1>              
+                <h1 class="font-semibold">{{get.vat}}</h1>
+                <h1 class="font-semibold">{{get.addres}}</h1>
+                <h1 class="font-semibold">{{get.postalCode}}</h1>
+                <h1 class="font-semibold">{{get.city}}</h1>
+                <h1 class="font-semibold">{{get.email}}</h1>
+            </div>
+        </div>
+    </div>
+    <div *ngIf="modalToggle" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white rounded-2xl col-start-2 shadow-2xl">
+        <h1 class="text-lg font-semibold m-8 text-center text-blue-900 uppercase">Add A New Client <span class="absolute top-0 right-0 m-6 text-xl"><fa-icon [icon]="close" (click)="modalToggle = !modalToggle"></fa-icon></span></h1>
+        <hr class="m-8 bg-black">
+        <div class="m-12">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-4">
+                <div>
+                    <div class="mt-4 text-center">
+                        <label class="block" for="title">Company Name</label>
+                        <input type="text" name="name" id="title" class="rounded-2xl" [(ngModel)]="client.companyName">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <label class="block" for="country">Country</label>
+                        <input type="text" name="country" id="country" class="rounded-2xl" [(ngModel)]="client.country">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <label class="block" for="type">Type</label>
+                        <select name="type" id="type" class="rounded-2xl px-10" [(ngModel)]="client.type">
+                            <option value="Business">Business</option>
+                            <option value="Private Individual">Private Individual</option>
+                        </select>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <label class="block" for="vat">Vat</label>
+                        <input type="text" name="vat" id="vat" class="rounded-2xl" [(ngModel)]="client.vat">
+                    </div>
+                </div>
+                <div>
+                    <div class="mt-4 text-center">
+                        <label class="block" for="addres">Street name & number</label>
+                        <input type="text" name="country" id="country" class="rounded-2xl" [(ngModel)]="client.addres">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <label class="block" for="zipcode">Postal code</label>
+                        <input type="text" name="country" id="zipcode" class="rounded-2xl" [(ngModel)]="client.postalCode">
+                    </div> 
+                    <div class="mt-4 text-center">
+                        <label class="block" for="city">City</label>
+                        <input type="text" name="city" id="city" class="rounded-2xl" [(ngModel)]="client.city">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <label class="block" for="email">Email</label>
+                        <input type="text" name="email" id="email" class="rounded-2xl" [(ngModel)]="client.email">
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 text-center">
+                <input type="submit" name="title" id="title" class="bg-blue-500 p-2 px-4 rounded-full text-white" (click)="addClient()">  
+            </div> 
+        </div>
+    </div>
+    
+</div>

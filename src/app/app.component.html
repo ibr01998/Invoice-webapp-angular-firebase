@@ -1,0 +1,51 @@
+<div *ngIf="!isSignedIn" class="grid grid-cols-2">
+  <div class="bg-blue-500 h-screen flex">
+    <div class="text-center m-auto">
+      <h1 class="text-5xl font-bold text-white">MyInvoice</h1>
+    </div>
+  </div>
+  <div class="bg-blue-50 h-screen flex">
+    <div *ngIf="!isSignedIn" class="text-center absolute top-0 right-0 m-4">
+      <button class=" bg-blue-500 text-white p-2 px-4 font-bold rounded-lg hover:bg-blue-400" (click)="btn()">{{name}}</button>
+    </div>
+    <div *ngIf="!isSignedIn" class="m-auto">
+      <div *ngIf="signup" class="text-center w-full flex justify-center">
+        <div  class="bg-white shadow-2xl rounded-2xl p-4 m-auto">
+          <form [formGroup]="registrationForm">
+            <h2 class="text-2xl font-bold uppercase">Sign Up</h2>
+            <div class="m-4">
+              <label for="email" class="block">Email</label>
+              <input type="text" id="email" #emailSignup formControlName="email"/>
+              <label *ngIf="email.invalid && email.touched" for="email" class="block">please enter a valid email</label>
+            </div>
+            <div class="m-4">
+              <label for="password" class="block">Password</label>
+              <input type="password" #passwordSignup formControlName="password">
+              <label *ngIf="password.invalid && password.touched" for="password" class="block">password needs to be atleast 8 characters</label>
+            </div>
+            <button class="bg-blue-500 text-white p-2 px-4 font-bold rounded-lg hover:bg-blue-400" (click)="onSignUp(emailSignup.value,passwordSignup.value)">Let go</button>
+          </form>
+        </div>
+      </div>
+
+      <div *ngIf="login" class="text-center w-full flex justify-center">
+        <div class="bg-white shadow-2xl rounded-2xl p-4 m-auto">
+          <h2 class="text-2xl font-bold uppercase">Login</h2>
+          <div class="m-4">
+            <label for="email" class="block">Email</label>
+            <input type="text" id="email" #email/>
+          </div>
+          <div class="m-4">
+            <label for="email" class="block">Password</label>
+            <input type="password" #password>
+          </div>
+          <button class="bg-blue-500 text-white p-2 px-4 font-bold rounded-lg hover:bg-blue-400" (click)="onSignIn(email.value,password.value)">Hello again!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="isSignedIn">
+  <router-outlet (isLogout)="handleLogout()"></router-outlet>
+</div>

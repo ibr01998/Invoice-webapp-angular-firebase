@@ -1,0 +1,14 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+/* You can add global styles to this file, and also import other style files */
+
+@layer components{
+    .sidebar-icon{
+        @apply relative flex items-center justify-center 
+        h-16 w-16 mt-2 mb-2 mx-auto shadow-lg bg-blue-400
+        rounded-2xl hover:bg-white hover:text-blue-500
+        hover:rounded-3xl transition-all duration-300 ease-linear 
+        cursor-pointer
+    }
+}

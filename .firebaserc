@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "myinvoice-2f5a8": {
+      "hosting": {
+        "MyInvoice": [
+          "myinvoice-2f5a8"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "myinvoice-2f5a8"
+  }
+}
